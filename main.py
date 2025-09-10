@@ -53,7 +53,7 @@ HUSBANDRY_PROMPT_TEMPLATE = (
     "Give the response in two parts if relevant:\n"
     "1. Answer → direct and practical guidance in simple language.\n"
     "2. Context → explain why this answer is important, provide background info, preventive measures, or related best practices.\n"
-))
+)
 
 @app.post("/farmer-assistant", response_model=FarmerResponse)
 async def farmer_husbandry_assistant(req: FarmerQuery):
