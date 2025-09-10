@@ -43,15 +43,17 @@ class FarmerResponse(BaseModel):
 
 # Prompt template
 HUSBANDRY_PROMPT_TEMPLATE = (
-    "You are an expert in animal husbandry. "
-    "A farmer has asked the following question:\n\n"
-    "{query}\n\n"
+    "You are an expert in animal husbandry and cattle management. "
+    "You must only answer questions related to livestock, dairy farming, animal nutrition, "
+    "breeding, cattle, buffalo, goats, sheep, or poultry. "
+    "If the question is NOT related to animal husbandry, reply strictly with: "
+    "'I can only answer questions related to animal husbandry and livestock.'\n\n"
+    "Farmer's Question: {query}\n\n"
     "{previous_context}\n"
-    "Give the response in two parts:\n"
+    "Give the response in two parts if relevant:\n"
     "1. Answer → direct and practical guidance in simple language.\n"
     "2. Context → explain why this answer is important, provide background info, preventive measures, or related best practices.\n"
-    "Keep the explanation simple and actionable for farmers."
-)
+))
 
 @app.post("/farmer-assistant", response_model=FarmerResponse)
 async def farmer_husbandry_assistant(req: FarmerQuery):
